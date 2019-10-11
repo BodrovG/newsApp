@@ -20,9 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let coordinator = Coordinator(window: window)
         self.coordinator2 = coordinator
         self.window = window
-        window.rootViewController = NewsTableViewController()
-        window.makeKeyAndVisible()
-//        coordinator.startFlow()
+        coordinator.startFlow()
         return true
     }
 }

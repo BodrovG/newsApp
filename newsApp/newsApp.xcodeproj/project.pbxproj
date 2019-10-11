@@ -11,9 +11,11 @@
 		C5859EBA2350771E00786312 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859EB92350771E00786312 /* SceneDelegate.swift */; };
 		C5859EC12350771F00786312 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5859EC02350771F00786312 /* Assets.xcassets */; };
 		C5859EC42350771F00786312 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5859EC22350771F00786312 /* LaunchScreen.storyboard */; };
-		C5859ECC235078A700786312 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C5859ECB235078A700786312 /* .gitignore */; };
 		C5859ECE23507B0F00786312 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859ECD23507B0F00786312 /* Coordinator.swift */; };
 		C5859ED123507BEA00786312 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859ED023507BEA00786312 /* NewsTableViewController.swift */; };
+		C5859ED5235084A700786312 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859ED4235084A700786312 /* NetworkService.swift */; };
+		C5859ED82350851600786312 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859ED72350851600786312 /* News.swift */; };
+		C5859EDB2350859600786312 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859EDA2350859600786312 /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,9 +25,11 @@
 		C5859EC02350771F00786312 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5859EC32350771F00786312 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5859EC52350771F00786312 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C5859ECB235078A700786312 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = ../../../../.gitignore; sourceTree = "<group>"; };
 		C5859ECD23507B0F00786312 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C5859ED023507BEA00786312 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		C5859ED4235084A700786312 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		C5859ED72350851600786312 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		C5859EDA2350859600786312 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,14 +62,15 @@
 		C5859EB62350771E00786312 /* newsApp */ = {
 			isa = PBXGroup;
 			children = (
-				C5859ECF23507BAA00786312 /* MainScreen */,
 				C5859EB72350771E00786312 /* AppDelegate.swift */,
 				C5859ECD23507B0F00786312 /* Coordinator.swift */,
 				C5859EB92350771E00786312 /* SceneDelegate.swift */,
 				C5859EC02350771F00786312 /* Assets.xcassets */,
 				C5859EC22350771F00786312 /* LaunchScreen.storyboard */,
 				C5859EC52350771F00786312 /* Info.plist */,
-				C5859ECB235078A700786312 /* .gitignore */,
+				C5859ECF23507BAA00786312 /* MainScreen */,
+				C5859ED32350848200786312 /* Service */,
+				C5859ED92350858300786312 /* Transport */,
 			);
 			path = newsApp;
 			sourceTree = "<group>";
@@ -76,6 +81,31 @@
 				C5859ED023507BEA00786312 /* NewsTableViewController.swift */,
 			);
 			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		C5859ED32350848200786312 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C5859ED4235084A700786312 /* NetworkService.swift */,
+				C5859ED6235084B800786312 /* Models */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C5859ED6235084B800786312 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C5859ED72350851600786312 /* News.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C5859ED92350858300786312 /* Transport */ = {
+			isa = PBXGroup;
+			children = (
+				C5859EDA2350859600786312 /* API.swift */,
+			);
+			path = Transport;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +167,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5859EC42350771F00786312 /* LaunchScreen.storyboard in Resources */,
-				C5859ECC235078A700786312 /* .gitignore in Resources */,
 				C5859EC12350771F00786312 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +178,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5859ED82350851600786312 /* News.swift in Sources */,
+				C5859EDB2350859600786312 /* API.swift in Sources */,
+				C5859ED5235084A700786312 /* NetworkService.swift in Sources */,
 				C5859ED123507BEA00786312 /* NewsTableViewController.swift in Sources */,
 				C5859EB82350771E00786312 /* AppDelegate.swift in Sources */,
 				C5859EBA2350771E00786312 /* SceneDelegate.swift in Sources */,
