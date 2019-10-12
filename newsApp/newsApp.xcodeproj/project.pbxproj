@@ -12,10 +12,13 @@
 		C5859EC12350771F00786312 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5859EC02350771F00786312 /* Assets.xcassets */; };
 		C5859EC42350771F00786312 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5859EC22350771F00786312 /* LaunchScreen.storyboard */; };
 		C5859ECE23507B0F00786312 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859ECD23507B0F00786312 /* Coordinator.swift */; };
-		C5859ED123507BEA00786312 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859ED023507BEA00786312 /* NewsTableViewController.swift */; };
+		C5859ED123507BEA00786312 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859ED023507BEA00786312 /* NewsListViewController.swift */; };
 		C5859ED5235084A700786312 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859ED4235084A700786312 /* NetworkService.swift */; };
 		C5859ED82350851600786312 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859ED72350851600786312 /* News.swift */; };
 		C5859EDB2350859600786312 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859EDA2350859600786312 /* API.swift */; };
+		C5859EDD235090FF00786312 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859EDC235090FF00786312 /* NewsTableViewCell.swift */; };
+		C5859EE0235097A300786312 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859EDF235097A300786312 /* UIView+Constraints.swift */; };
+		C5859EE92351E40500786312 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859EE82351E40500786312 /* ImageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,10 +29,13 @@
 		C5859EC32350771F00786312 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5859EC52350771F00786312 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5859ECD23507B0F00786312 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		C5859ED023507BEA00786312 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		C5859ED023507BEA00786312 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
 		C5859ED4235084A700786312 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		C5859ED72350851600786312 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		C5859EDA2350859600786312 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C5859EDC235090FF00786312 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		C5859EDF235097A300786312 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		C5859EE82351E40500786312 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,15 +68,12 @@
 		C5859EB62350771E00786312 /* newsApp */ = {
 			isa = PBXGroup;
 			children = (
-				C5859EB72350771E00786312 /* AppDelegate.swift */,
+				C5859EDE2350978100786312 /* Extension */,
 				C5859ECD23507B0F00786312 /* Coordinator.swift */,
-				C5859EB92350771E00786312 /* SceneDelegate.swift */,
-				C5859EC02350771F00786312 /* Assets.xcassets */,
-				C5859EC22350771F00786312 /* LaunchScreen.storyboard */,
-				C5859EC52350771F00786312 /* Info.plist */,
 				C5859ECF23507BAA00786312 /* MainScreen */,
 				C5859ED32350848200786312 /* Service */,
 				C5859ED92350858300786312 /* Transport */,
+				C5859EE72351DC7100786312 /* App & Resources */,
 			);
 			path = newsApp;
 			sourceTree = "<group>";
@@ -78,7 +81,8 @@
 		C5859ECF23507BAA00786312 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
-				C5859ED023507BEA00786312 /* NewsTableViewController.swift */,
+				C5859ED023507BEA00786312 /* NewsListViewController.swift */,
+				C5859EDC235090FF00786312 /* NewsTableViewCell.swift */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -87,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				C5859ED4235084A700786312 /* NetworkService.swift */,
+				C5859EE82351E40500786312 /* ImageService.swift */,
 				C5859ED6235084B800786312 /* Models */,
 			);
 			path = Service;
@@ -106,6 +111,26 @@
 				C5859EDA2350859600786312 /* API.swift */,
 			);
 			path = Transport;
+			sourceTree = "<group>";
+		};
+		C5859EDE2350978100786312 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C5859EDF235097A300786312 /* UIView+Constraints.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C5859EE72351DC7100786312 /* App & Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C5859EC52350771F00786312 /* Info.plist */,
+				C5859EB72350771E00786312 /* AppDelegate.swift */,
+				C5859EB92350771E00786312 /* SceneDelegate.swift */,
+				C5859EC02350771F00786312 /* Assets.xcassets */,
+				C5859EC22350771F00786312 /* LaunchScreen.storyboard */,
+			);
+			path = "App & Resources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,8 +205,11 @@
 			files = (
 				C5859ED82350851600786312 /* News.swift in Sources */,
 				C5859EDB2350859600786312 /* API.swift in Sources */,
+				C5859EDD235090FF00786312 /* NewsTableViewCell.swift in Sources */,
+				C5859EE92351E40500786312 /* ImageService.swift in Sources */,
+				C5859EE0235097A300786312 /* UIView+Constraints.swift in Sources */,
 				C5859ED5235084A700786312 /* NetworkService.swift in Sources */,
-				C5859ED123507BEA00786312 /* NewsTableViewController.swift in Sources */,
+				C5859ED123507BEA00786312 /* NewsListViewController.swift in Sources */,
 				C5859EB82350771E00786312 /* AppDelegate.swift in Sources */,
 				C5859EBA2350771E00786312 /* SceneDelegate.swift in Sources */,
 				C5859ECE23507B0F00786312 /* Coordinator.swift in Sources */,
@@ -252,6 +280,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = newsApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -306,6 +335,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = newsApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -321,12 +351,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10.1;
 				DEVELOPMENT_TEAM = 9F7AP65PP4;
-				INFOPLIST_FILE = newsApp/Info.plist;
+				INFOPLIST_FILE = "newsApp/App & Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.newsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -339,12 +371,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10.1;
 				DEVELOPMENT_TEAM = 9F7AP65PP4;
-				INFOPLIST_FILE = newsApp/Info.plist;
+				INFOPLIST_FILE = "newsApp/App & Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.newsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

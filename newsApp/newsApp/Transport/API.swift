@@ -15,9 +15,7 @@ class API {
             return
         }
         var request = URLRequest(url: url)
-        request.allHTTPHeaderFields = prepareHeader()
         request.httpMethod = "get"
-        print(request)
         let task = createDataTask(from: request, completion: completion)
         task.resume()
     }
@@ -45,12 +43,6 @@ enum APIError: LocalizedError {
 }
 
 private extension API {
-    
-    func prepareHeader() -> [String:String]? {
-        var headers = [String:String]()
-        headers["Authorization"] = "Client-ID 93294ce5e20fe7f8d1c07df19b322b5936af4a9772ce831dc71e635ec83c85bd"
-        return headers
-    }
     
     func createDataTask<Model: Decodable>(
         from request: URLRequest,
@@ -82,11 +74,10 @@ private extension API {
         components.host = "newsapi.org"
         components.path = "/v2/everything"
         
-        //queryItems - берёт все параметры и перконвертирует их в формат, удобный для url-строки
         components.queryItems = params.map {
             URLQueryItem(name: $0, value: $1)
         }
-        //return components.url - то, что мы хотим вернуть из всех составных частей
+        
         return components.url!
     }
 }
