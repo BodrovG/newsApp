@@ -10,15 +10,16 @@ import Foundation
 
 protocol INetworkService {
     
-    func news(completion: @escaping (Result<News, Error>) -> Void )
+    func news(page: Int, completion: @escaping (Result<NewsResponse, Error>) -> Void )
     
 }
 
 class NetworkService: INetworkService{
     
-    func news(completion: @escaping (Result<News, Error>) -> Void ) {
+    func news(page: Int, completion: @escaping (Result<NewsResponse, Error>) -> Void ) {
         var parameters = [String:String]()
-        parameters["q"] = "bitcoin"
+        parameters["q"] = "russia"
+        parameters["page"] = "\(page)"
         parameters["apiKey"] = "a84a77df877e48d89ac7c0cfef570d15"
         
         API().requestModel(parameters: parameters, completion: completion)

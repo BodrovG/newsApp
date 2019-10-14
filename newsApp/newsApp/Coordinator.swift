@@ -24,7 +24,7 @@ final class Coordinator: CoordinatorProtocol {
     }
     
     func startFlow() {
-        window.rootViewController = NewsTableViewController()
+        window.rootViewController = NewsListViewController()
         window.makeKeyAndVisible()
     }
     

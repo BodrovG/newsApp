@@ -34,11 +34,12 @@ class ImageService {
             
             if downloadedImage != nil {
                 cache.setObject(downloadedImage!, forKey: url.absoluteString as NSString)
+
+                DispatchQueue.main.async {
+                    completion(.success(downloadedImage!))
+                }
             }
             
-            DispatchQueue.main.async {
-                completion(.success(downloadedImage!))
-            }
         }
         dataTask.resume()
     }

@@ -8,15 +8,6 @@
 
 import UIKit
 
-struct NewsTableViewCellConfiguration {
-    
-    let title: String
-    let description: String
-    let urlImage: String
-    
-    
-}
-
 final class NewsTableViewCell: UITableViewCell {
 
     lazy var newsImageView: UIImageView = {
@@ -51,7 +42,7 @@ final class NewsTableViewCell: UITableViewCell {
     }
     
     
-    func configure(configuration: NewsTableViewCellConfiguration) {
+    func configure(with configuration: News) {
         titleView.text = configuration.title
         descriptionView.text = configuration.description
         

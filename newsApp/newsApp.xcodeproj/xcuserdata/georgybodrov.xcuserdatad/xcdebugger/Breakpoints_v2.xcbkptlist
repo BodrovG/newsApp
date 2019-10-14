@@ -52,5 +52,293 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "77D7DB12-DD1D-43AB-9BB1-930AF4E2FD8A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "newsApp/Transport/API.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "createDataTask(from:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CE3803F2-FB25-481D-878D-20C0BB2E1660"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "newsApp/Transport/API.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "createDataTask(from:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A4564910-C6C7-4B74-89E3-D4C79209D199"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "newsApp/Transport/API.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "createDataTask(from:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3ACDCCF3-D6B7-487C-9721-A5041B1BE448"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "newsApp/Transport/API.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "createDataTask(from:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "44938C70-2C52-4D49-AB8F-303472D70AAB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "newsApp/MainScreen/NewsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "fetchNews()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "45CAD476-89DA-404E-853F-C673B27D659C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "newsApp/MainScreen/NewsListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "tableView(_:prefetchRowsAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A22AAD04-A40B-409C-A8B1-E3244464A202"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "newsApp/MainScreen/NewsListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "tableView(_:prefetchRowsAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "495DCAB6-AFD7-4B19-B639-7E07D7F8612D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "newsApp/MainScreen/NewsListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "isLoadingCell(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1608A455-6E16-4D5C-B2DC-9CB635A5F76A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "newsApp/MainScreen/NewsListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "updateImageForCell(_:inTableView:atIndexPath:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CDD043D7-5368-4741-BB04-A46F7E172AB3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "newsApp/MainScreen/NewsListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "updateImageForCell(_:inTableView:atIndexPath:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CDD043D7-5368-4741-BB04-A46F7E172AB3 - 8bd9a5eb58da35ad"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.UIImage, Swift.Error&gt;) -&gt; () in newsApp.NewsListViewController.updateImageForCell(_: newsApp.NewsTableViewCell, inTableView: __C.UITableView, atIndexPath: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "newsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/georgybodrov/Desktop/swift%20project/newsApp/newsApp/newsApp/MainScreen/NewsListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "302">
+               </Location>
+               <Location
+                  uuid = "CDD043D7-5368-4741-BB04-A46F7E172AB3 - 8bd9a5eb58da35ad"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.UIImage, Swift.Error&gt;) -&gt; () in newsApp.NewsListViewController.updateImageForCell(_: newsApp.NewsTableViewCell, inTableView: __C.UITableView, atIndexPath: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "newsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/georgybodrov/Desktop/swift%20project/newsApp/newsApp/newsApp/MainScreen/NewsListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "327">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B7841468-EB10-4758-BCFB-0261E2A13675"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "newsApp/MainScreen/NewsListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "updateImageForCell(_:inTableView:atIndexPath:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B7841468-EB10-4758-BCFB-0261E2A13675 - 8bd9a5eb58da35ad"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.UIImage, Swift.Error&gt;) -&gt; () in newsApp.NewsListViewController.updateImageForCell(_: newsApp.NewsTableViewCell, inTableView: __C.UITableView, atIndexPath: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "newsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/georgybodrov/Desktop/swift%20project/newsApp/newsApp/newsApp/MainScreen/NewsListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "302">
+               </Location>
+               <Location
+                  uuid = "B7841468-EB10-4758-BCFB-0261E2A13675 - 8bd9a5eb58da35ad"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.UIImage, Swift.Error&gt;) -&gt; () in newsApp.NewsListViewController.updateImageForCell(_: newsApp.NewsTableViewCell, inTableView: __C.UITableView, atIndexPath: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "newsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/georgybodrov/Desktop/swift%20project/newsApp/newsApp/newsApp/MainScreen/NewsListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "327">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "774E04A1-9623-47AC-94D0-D5D51929C655"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "newsApp/MainScreen/NewsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "calculateIndexPathsToReload(from:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "774E04A1-9623-47AC-94D0-D5D51929C655 - eb6a487f804128ac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "newsApp.NewsViewModel.(calculateIndexPathsToReload in _12122F150930BF209CFA7F6084F72227)(from: Swift.Array&lt;newsApp.News&gt;) -&gt; Swift.Array&lt;Foundation.IndexPath&gt;"
+                  moduleName = "newsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/georgybodrov/Desktop/swift%20project/newsApp/newsApp/newsApp/MainScreen/NewsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "293">
+               </Location>
+               <Location
+                  uuid = "774E04A1-9623-47AC-94D0-D5D51929C655 - fd2c980bae5f38aa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int) -&gt; Foundation.IndexPath in newsApp.NewsViewModel.(calculateIndexPathsToReload in _12122F150930BF209CFA7F6084F72227)(from: Swift.Array&lt;newsApp.News&gt;) -&gt; Swift.Array&lt;Foundation.IndexPath&gt;"
+                  moduleName = "newsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/georgybodrov/Desktop/swift%20project/newsApp/newsApp/newsApp/MainScreen/NewsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
