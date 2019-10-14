@@ -12,6 +12,7 @@ struct News: Decodable {
     let title: String
     let description: String
     let urlToImage: String
+    let url: String
     
 //    enum CodingKeys: String, CodingKey {
 //          case title

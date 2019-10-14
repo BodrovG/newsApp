@@ -4,8 +4,9 @@
         <attribute name="descriptionText" optional="YES" attributeType="String"/>
         <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="urlArticle" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="NewsCD" positionX="-36" positionY="9" width="128" height="88"/>
+        <element name="NewsCD" positionX="-36" positionY="9" width="128" height="103"/>
     </elements>
 </model>
