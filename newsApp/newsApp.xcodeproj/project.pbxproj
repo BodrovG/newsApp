@@ -22,6 +22,7 @@
 		C5859EF323535C9200786312 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859EF223535C9200786312 /* News.swift */; };
 		C5859EF52353645800786312 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859EF42353645800786312 /* UIViewController+Alert.swift */; };
 		C5859EF72353649200786312 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859EF62353649200786312 /* NewsViewModel.swift */; };
+		C5E699562354B1CC00C04F11 /* CoreDataModelNews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C5E699542354B1CC00C04F11 /* CoreDataModelNews.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		C5859EF223535C9200786312 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		C5859EF42353645800786312 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		C5859EF62353649200786312 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		C5E699552354B1CC00C04F11 /* CoreDataModelNews.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModelNews.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +81,9 @@
 				C5859ECF23507BAA00786312 /* MainScreen */,
 				C5859ED32350848200786312 /* Service */,
 				C5859ED92350858300786312 /* Transport */,
+				C5E69950235496B400C04F11 /* CoreData */,
 				C5859EE72351DC7100786312 /* App & Resources */,
+				C5E699542354B1CC00C04F11 /* CoreDataModelNews.xcdatamodeld */,
 			);
 			path = newsApp;
 			sourceTree = "<group>";
@@ -140,6 +144,13 @@
 				C5859EC22350771F00786312 /* LaunchScreen.storyboard */,
 			);
 			path = "App & Resources";
+			sourceTree = "<group>";
+		};
+		C5E69950235496B400C04F11 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +236,7 @@
 				C5859EF72353649200786312 /* NewsViewModel.swift in Sources */,
 				C5859EBA2350771E00786312 /* SceneDelegate.swift in Sources */,
 				C5859ECE23507B0F00786312 /* Coordinator.swift in Sources */,
+				C5E699562354B1CC00C04F11 /* CoreDataModelNews.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +432,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C5E699542354B1CC00C04F11 /* CoreDataModelNews.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C5E699552354B1CC00C04F11 /* CoreDataModelNews.xcdatamodel */,
+			);
+			currentVersion = C5E699552354B1CC00C04F11 /* CoreDataModelNews.xcdatamodel */;
+			path = CoreDataModelNews.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C5859EAC2350771E00786312 /* Project object */;
 }
