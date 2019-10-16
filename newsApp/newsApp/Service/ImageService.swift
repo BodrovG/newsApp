@@ -8,22 +8,36 @@
 
 import UIKit
 
+protocol Cancelable: AnyObject {
+    
+    func cancel()
+}
+
 class ImageService {
     
     private static let cache = NSCache<NSString, UIImage>()
     
-    static func getImage(withURL url: String, completion: @escaping (Result<UIImage, Error>) -> Void){
+    static func getImage(
+        withURL url: String,
+        completion: @escaping (Result<UIImage, Error>) -> Void
+    ) -> Cancelable? {
+        
         if let image = cache.object(forKey: url as NSString) {
             completion(.success(image))
+            return nil
         } else {
-            downloadImage(withURL: url, completion: completion)
+            return downloadImage(withURL: url, completion: completion)
         }
     }
     
-    private static func downloadImage(withURL url: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
+    private static func downloadImage(
+        withURL url: String,
+        completion: @escaping (Result<UIImage, Error>) -> Void
+    ) -> Cancelable? {
+        
         guard let url = URL(string: url) else {
             completion(.failure(APIError.wrongURL))
-            return
+            return nil
         }
         let dataTask = URLSession.shared.dataTask(with: url) { data, responseURL, error in
             var downloadedImage: UIImage?
@@ -34,7 +48,7 @@ class ImageService {
             
             if downloadedImage != nil {
                 cache.setObject(downloadedImage!, forKey: url.absoluteString as NSString)
-
+                
                 DispatchQueue.main.async {
                     completion(.success(downloadedImage!))
                 }
@@ -42,5 +56,8 @@ class ImageService {
             
         }
         dataTask.resume()
+        return dataTask
     }
 }
+
+extension URLSessionDataTask: Cancelable { }

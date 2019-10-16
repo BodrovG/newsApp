@@ -16,7 +16,6 @@ class NewsListViewController: UIViewController, Alert {
     var tableView: UITableView = {
         let tv = UITableView()
         tv.separatorColor = UIColor(red: CGFloat(0), green: CGFloat(104/255.0), blue: CGFloat(55/255.0), alpha: CGFloat(1.0))
-//        tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
     var indicatorView: UIActivityIndicatorView = {
@@ -25,25 +24,23 @@ class NewsListViewController: UIViewController, Alert {
         indicator.hidesWhenStopped = true
         indicator.startAnimating()
         indicator.translatesAutoresizingMaskIntoConstraints = false
-//        indicator.color =
-//        indicator.color = UIColor(red: CGFloat(0), green: CGFloat(104/255.0), blue: CGFloat(55/255.0), alpha: CGFloat(1.0))
         return indicator
     }()
     
-//    var site: String!
     
     private var viewModel: NewsViewModel!
+    
+    private var cancelables: [String: Cancelable] = [:]
     
     private var shouldShowLoadingCell = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        indicatorView.color = ColorPalette.RWGreen
-//        indicatorView.pinToSuperview(superview: self.view)
         tableView.pinToSuperview(superview: view, top: 0, right: 0, bottom: 0, left: 0)
         tableView.isHidden = true
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.prefetchDataSource = self
         tableView.addSubview(indicatorView)
         indicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -58,7 +55,8 @@ class NewsListViewController: UIViewController, Alert {
     }
 }
 
-extension NewsListViewController: UITableViewDataSource {
+extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.currentCount
     }
@@ -72,25 +70,28 @@ extension NewsListViewController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cancelables[viewModel.news(at: indexPath.row).urlImage]?.cancel()
+        cancelables[viewModel.news(at: indexPath.row).urlImage] = nil
+    }
+    
     func updateImageForCell(_ cell: NewsTableViewCell, inTableView tableView: UITableView, atIndexPath indexPath: IndexPath) {
-            
-            cell.newsImageView.image = UIImage(named: "defaultImage")
-
-            ImageService.getImage(withURL: viewModel.news(at: indexPath.row).urlToImage) { result in
-                switch result {
-                case .success(let image):
-                    //delete
-                    let g2 = tableView.indexPath(for: cell)?.row
-//                    print(g2)
-    //                if (tableView.indexPath(for: cell) as NSIndexPath?)?.row == (indexPath as NSIndexPath).row {
-                        cell.newsImageView.image = image
-    //                }
-                case .failure(let error):
-                    print(error)
-                }
+        
+        let urlImage = viewModel.news(at: indexPath.row).urlImage
+        
+        cell.newsImageView.image = UIImage(named: "defaultImage")
+        
+        let cancelable = ImageService.getImage(withURL: urlImage) { result in
+            switch result {
+            case .success(let image):
+                cell.newsImageView.image = image
+            case .failure(let error):
+                print(error)
             }
-            
         }
+        cancelables[urlImage] = cancelable
+        
+    }
 }
 
 extension NewsListViewController: NewsViewModelDelegate {
@@ -111,9 +112,7 @@ extension NewsListViewController: NewsViewModelDelegate {
 
 extension NewsListViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        //delete
-        let g = indexPaths
-        print("indexPaths = \(g)")
+    
         if indexPaths.contains(where: isLoadingCell) {
             viewModel.fetchNews()
         }
@@ -123,10 +122,7 @@ extension NewsListViewController: UITableViewDataSourcePrefetching {
 
 private extension NewsListViewController {
     func isLoadingCell(for indexPath: IndexPath) -> Bool {
-        //delete
         let g = indexPath.row + Int(1)
-        let f = viewModel.currentCount
-        print(g)
         return g >= viewModel.currentCount
     }
     
