@@ -18,14 +18,14 @@ class NewsListViewController: UIViewController, Alert {
         tv.separatorColor = UIColor(red: CGFloat(0), green: CGFloat(104/255.0), blue: CGFloat(55/255.0), alpha: CGFloat(1.0))
         return tv
     }()
-    var indicatorView: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView()
-        indicator.isUserInteractionEnabled = true
-        indicator.hidesWhenStopped = true
-        indicator.startAnimating()
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        return indicator
-    }()
+//    var indicatorView: UIActivityIndicatorView = {
+//        let indicator = UIActivityIndicatorView()
+//        indicator.isUserInteractionEnabled = true
+//        indicator.hidesWhenStopped = true
+//        indicator.startAnimating()
+//        indicator.translatesAutoresizingMaskIntoConstraints = false
+//        return indicator
+//    }()
     
     
     private var viewModel: NewsViewModel!
@@ -42,10 +42,10 @@ class NewsListViewController: UIViewController, Alert {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.prefetchDataSource = self
-        tableView.addSubview(indicatorView)
-        indicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        indicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        indicatorView.startAnimating()
+//        tableView.addSubview(indicatorView)
+//        indicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        indicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//        indicatorView.startAnimating()
         
         tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: CellIdentifiers.list)
         
@@ -96,13 +96,13 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension NewsListViewController: NewsViewModelDelegate {
     func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?) {
-        indicatorView.stopAnimating()
+//        indicatorView.stopAnimating()
         tableView.isHidden = false
         tableView.reloadData()
     }
     
     func onFetchFailed(with reason: String) {
-        indicatorView.stopAnimating()
+//        indicatorView.stopAnimating()
         
         let title = "Warning"
         let action = UIAlertAction(title: "OK", style: .default)
@@ -122,8 +122,8 @@ extension NewsListViewController: UITableViewDataSourcePrefetching {
 
 private extension NewsListViewController {
     func isLoadingCell(for indexPath: IndexPath) -> Bool {
-        let g = indexPath.row + Int(1)
-        return g >= viewModel.currentCount
+        let correctIndexPath = indexPath.row + Int(1)
+        return correctIndexPath >= viewModel.currentCount
     }
     
     func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {

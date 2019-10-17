@@ -74,7 +74,6 @@ private extension CoreData {
                     $0.urlArticle == result.urlArticle
                 }
             }
-            print(filteredNews)
             
             let news = filteredNews.compactMap{ self.createNews(from: $0) }
             print("Got \(filteredNews.count) news")

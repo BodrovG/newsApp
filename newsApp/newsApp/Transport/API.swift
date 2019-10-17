@@ -65,9 +65,9 @@ private extension API {
             do {
                 let model = try JSONDecoder().decode(NewsResponse.self, from: data)
                 self.coreData.addNewsOnCoreData(model: model, completion: completion)
-//                completion(.success(model))
+//                completion(.success(model.news))
             } catch let error {
-                completion(.failure(APIError.parsing(error)))
+//                completion(.failure(APIError.parsing(error)))
             }
         }
     }

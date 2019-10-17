@@ -16,26 +16,20 @@ final class NewsTableViewCell: UITableViewCell {
         return view
     }()
     
-    private lazy var indicatorView: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView()
-        indicator.isUserInteractionEnabled = true
-        indicator.hidesWhenStopped = true
-        indicator.startAnimating()
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        return indicator
-    }()
-    
     private lazy var titleView: UILabel = {
         let textLabel = UILabel()
         textLabel.textColor = UIColor(red: 0.31, green: 0.31, blue: 0.31, alpha: 1)
         textLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        textLabel.numberOfLines = 0
+        textLabel.lineBreakMode = .byWordWrapping
         return textLabel
     }()
     
     private lazy var descriptionView: UILabel = {
         let textLabel = UILabel()
+        textLabel.numberOfLines = 0
+        textLabel.lineBreakMode = .byWordWrapping
         textLabel.textColor = UIColor(red: 0.74, green: 0.74, blue: 0.74, alpha: 1)
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
         return textLabel
     }()
     
@@ -54,19 +48,14 @@ final class NewsTableViewCell: UITableViewCell {
     func configure(with configuration: News) {
         titleView.text = configuration.title
         descriptionView.text = configuration.description
-        
     }
     
+    
     private func addConstraints() {
-        indicatorView.pinToSuperview(superview: self)
         
-        indicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        indicatorView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        indicatorView.startAnimating()
+        newsImageView.pinToSuperview(superview: self, top: 20, right: -16, left: 16, height: 200)
         
-        newsImageView.pinToSuperview(superview: self, top: 20, right: -16, left: 16, height: 200, width: nil)
-        
-        titleView.pinToSuperview(superview: self, left: 16)
+        titleView.pinToSuperview(superview: self, right: -16, left: 16)
         titleView.topAnchor.constraint(equalToSystemSpacingBelow: newsImageView.bottomAnchor, multiplier: 5).isActive = true
         
         descriptionView.pinToSuperview(superview: self, right: -16, bottom: -12, left: 16)
