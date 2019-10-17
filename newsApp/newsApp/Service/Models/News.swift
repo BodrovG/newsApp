@@ -11,17 +11,18 @@ import Foundation
 struct News: Decodable {
     let title: String
     let description: String
-    let urlToImage: String
-    let url: String
+    let urlImage: String
+    let urlArticle: String
     
-//    enum CodingKeys: String, CodingKey {
-//          case title
-//          case description
-//          case urlToImage
-//        }
-//
-//        init(title: String, description: String, urlImage: String) {
-//          self.title = title
+    enum CodingKeys: String, CodingKey {
+        case title
+        case description
+        case urlImage = "urlToImage"
+        case urlArticle = "url"
+    }
+    //
+    //        init(title: String, description: String, urlImage: String) {
+    //          self.title = title
 //          self.description = description
 //          self.urlToImage = urlImage
 //        }

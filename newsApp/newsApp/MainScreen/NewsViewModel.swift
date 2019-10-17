@@ -18,7 +18,6 @@ final class NewsViewModel {
     
     private var news: [News] = []
     private var currentPage = 1
-    private var total = 0
     private var isFetchInProgress = false
     
     let networkService = NetworkService()
@@ -27,9 +26,6 @@ final class NewsViewModel {
         self.delegate = delegate
     }
     
-    var totalCount: Int {
-        return total
-    }
     
     var currentCount: Int {
         return news.count
@@ -40,36 +36,28 @@ final class NewsViewModel {
     }
     
     func fetchNews() {
-        // 1
         guard !isFetchInProgress else {
             return
         }
         
-        // 2
         isFetchInProgress = true
         
         networkService.news(page: currentPage) { result in
             switch result {
-            // 3
             case .failure(let error):
                 DispatchQueue.main.async {
                     self.isFetchInProgress = false
                     self.delegate?.onFetchFailed(with: error.localizedDescription )
                 }
-            // 4
             case .success(let response):
                 DispatchQueue.main.async {
-                    // 1
                     self.currentPage += 1
                     self.isFetchInProgress = false
-                    // 2
-                    self.total = response.totalResults
-                    self.news.append(contentsOf: response.news)
+                    self.news.append(contentsOf: response)
                     
-                    // 3
                     
                     if self.currentPage != 2 {
-                        let indexPathsToReload = self.calculateIndexPathsToReload(from: response.news)
+                        let indexPathsToReload = self.calculateIndexPathsToReload(from: response)
                         self.delegate?.onFetchCompleted(with: indexPathsToReload)
                     } else {
                         self.delegate?.onFetchCompleted(with: .none)
@@ -82,10 +70,7 @@ final class NewsViewModel {
     private func calculateIndexPathsToReload(from newNews: [News]) -> [IndexPath] {
         let startIndex = news.count - newNews.count
         let endIndex = startIndex + newNews.count
-        return (startIndex..<endIndex).map { result in
-            //delete
-            print("result = \(result)")
-            return IndexPath(row: result, section: 0) }
+        return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+        
     }
-    
 }

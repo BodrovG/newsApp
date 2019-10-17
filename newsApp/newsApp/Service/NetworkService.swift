@@ -10,13 +10,13 @@ import Foundation
 
 protocol INetworkService {
     
-    func news(page: Int, completion: @escaping (Result<NewsResponse, Error>) -> Void )
+    func news(page: Int, completion: @escaping (Result<[News], Error>) -> Void )
     
 }
 
 class NetworkService: INetworkService{
     
-    func news(page: Int, completion: @escaping (Result<NewsResponse, Error>) -> Void ) {
+    func news(page: Int, completion: @escaping (Result<[News], Error>) -> Void ) {
         var parameters = [String:String]()
         parameters["q"] = "russia"
         parameters["page"] = "\(page)"

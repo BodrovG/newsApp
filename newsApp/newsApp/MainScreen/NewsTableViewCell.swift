@@ -9,11 +9,20 @@
 import UIKit
 
 final class NewsTableViewCell: UITableViewCell {
-
+    
     lazy var newsImageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
         return view
+    }()
+    
+    private lazy var indicatorView: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.isUserInteractionEnabled = true
+        indicator.hidesWhenStopped = true
+        indicator.startAnimating()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
     }()
     
     private lazy var titleView: UILabel = {
@@ -49,6 +58,11 @@ final class NewsTableViewCell: UITableViewCell {
     }
     
     private func addConstraints() {
+        indicatorView.pinToSuperview(superview: self)
+        
+        indicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        indicatorView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        indicatorView.startAnimating()
         
         newsImageView.pinToSuperview(superview: self, top: 20, right: -16, left: 16, height: 200, width: nil)
         

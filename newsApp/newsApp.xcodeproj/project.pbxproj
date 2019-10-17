@@ -23,6 +23,9 @@
 		C5859EF52353645800786312 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859EF42353645800786312 /* UIViewController+Alert.swift */; };
 		C5859EF72353649200786312 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5859EF62353649200786312 /* NewsViewModel.swift */; };
 		C5E699562354B1CC00C04F11 /* CoreDataModelNews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C5E699542354B1CC00C04F11 /* CoreDataModelNews.xcdatamodeld */; };
+		C5E699612355DFBB00C04F11 /* NewsCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E6995F2355DFBB00C04F11 /* NewsCD+CoreDataClass.swift */; };
+		C5E699622355DFBB00C04F11 /* NewsCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E699602355DFBB00C04F11 /* NewsCD+CoreDataProperties.swift */; };
+		C5E69987235705AD00C04F11 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E69986235705AD00C04F11 /* CoreData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		C5859EF42353645800786312 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		C5859EF62353649200786312 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		C5E699552354B1CC00C04F11 /* CoreDataModelNews.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModelNews.xcdatamodel; sourceTree = "<group>"; };
+		C5E6995F2355DFBB00C04F11 /* NewsCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NewsCD+CoreDataClass.swift"; path = "newsApp/Service/Models/NewsCD+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		C5E699602355DFBB00C04F11 /* NewsCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NewsCD+CoreDataProperties.swift"; path = "newsApp/Service/Models/NewsCD+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		C5E69986235705AD00C04F11 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,14 +82,13 @@
 		C5859EB62350771E00786312 /* newsApp */ = {
 			isa = PBXGroup;
 			children = (
+				C5E69988235758CB00C04F11 /* App */,
 				C5859EDE2350978100786312 /* Extension */,
 				C5859ECD23507B0F00786312 /* Coordinator.swift */,
 				C5859ECF23507BAA00786312 /* MainScreen */,
 				C5859ED32350848200786312 /* Service */,
 				C5859ED92350858300786312 /* Transport */,
-				C5E69950235496B400C04F11 /* CoreData */,
-				C5859EE72351DC7100786312 /* App & Resources */,
-				C5E699542354B1CC00C04F11 /* CoreDataModelNews.xcdatamodeld */,
+				C5859EE72351DC7100786312 /* Resources */,
 			);
 			path = newsApp;
 			sourceTree = "<group>";
@@ -113,6 +118,8 @@
 			children = (
 				C5859ED72350851600786312 /* NewsResponse.swift */,
 				C5859EF223535C9200786312 /* News.swift */,
+				C5E6995F2355DFBB00C04F11 /* NewsCD+CoreDataClass.swift */,
+				C5E699602355DFBB00C04F11 /* NewsCD+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				C5859EDA2350859600786312 /* API.swift */,
+				C5E69986235705AD00C04F11 /* CoreData.swift */,
 			);
 			path = Transport;
 			sourceTree = "<group>";
@@ -134,23 +142,24 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		C5859EE72351DC7100786312 /* App & Resources */ = {
+		C5859EE72351DC7100786312 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				C5859EC52350771F00786312 /* Info.plist */,
-				C5859EB72350771E00786312 /* AppDelegate.swift */,
-				C5859EB92350771E00786312 /* SceneDelegate.swift */,
 				C5859EC02350771F00786312 /* Assets.xcassets */,
 				C5859EC22350771F00786312 /* LaunchScreen.storyboard */,
+				C5E699542354B1CC00C04F11 /* CoreDataModelNews.xcdatamodeld */,
 			);
-			path = "App & Resources";
+			path = Resources;
 			sourceTree = "<group>";
 		};
-		C5E69950235496B400C04F11 /* CoreData */ = {
+		C5E69988235758CB00C04F11 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				C5859EB72350771E00786312 /* AppDelegate.swift */,
+				C5859EB92350771E00786312 /* SceneDelegate.swift */,
 			);
-			path = CoreData;
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,17 +235,20 @@
 				C5859ED82350851600786312 /* NewsResponse.swift in Sources */,
 				C5859EDB2350859600786312 /* API.swift in Sources */,
 				C5859EDD235090FF00786312 /* NewsTableViewCell.swift in Sources */,
+				C5E69987235705AD00C04F11 /* CoreData.swift in Sources */,
 				C5859EF52353645800786312 /* UIViewController+Alert.swift in Sources */,
 				C5859EE92351E40500786312 /* ImageService.swift in Sources */,
 				C5859EE0235097A300786312 /* UIView+Constraints.swift in Sources */,
 				C5859ED5235084A700786312 /* NetworkService.swift in Sources */,
 				C5859EF323535C9200786312 /* News.swift in Sources */,
 				C5859ED123507BEA00786312 /* NewsListViewController.swift in Sources */,
+				C5E699622355DFBB00C04F11 /* NewsCD+CoreDataProperties.swift in Sources */,
 				C5859EB82350771E00786312 /* AppDelegate.swift in Sources */,
 				C5859EF72353649200786312 /* NewsViewModel.swift in Sources */,
 				C5859EBA2350771E00786312 /* SceneDelegate.swift in Sources */,
 				C5859ECE23507B0F00786312 /* Coordinator.swift in Sources */,
 				C5E699562354B1CC00C04F11 /* CoreDataModelNews.xcdatamodeld in Sources */,
+				C5E699612355DFBB00C04F11 /* NewsCD+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = newsApp/Info.plist;
+				INFOPLIST_FILE = newsApp/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -359,7 +371,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = newsApp/Info.plist;
+				INFOPLIST_FILE = newsApp/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -377,7 +389,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 10.1;
 				DEVELOPMENT_TEAM = 9F7AP65PP4;
-				INFOPLIST_FILE = "newsApp/App & Resources/Info.plist";
+				INFOPLIST_FILE = newsApp/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -397,7 +409,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 10.1;
 				DEVELOPMENT_TEAM = 9F7AP65PP4;
-				INFOPLIST_FILE = "newsApp/App & Resources/Info.plist";
+				INFOPLIST_FILE = newsApp/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

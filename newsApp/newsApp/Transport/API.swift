@@ -9,7 +9,10 @@
 import Foundation
 
 class API {
-    func requestModel<Model: Decodable>(parameters: [String:String], completion: @escaping (Result<Model, Error>) -> Void) {
+    
+    let coreData = CoreData()
+    
+    func requestModel(parameters: [String:String], completion: @escaping (Result<[News], Error>) -> Void) {
         guard let url = self.baseUrl(params: parameters) else {
             completion(.failure(APIError.wrongURL))
             return
@@ -44,9 +47,9 @@ enum APIError: LocalizedError {
 
 private extension API {
     
-    func createDataTask<Model: Decodable>(
+    func createDataTask(
         from request: URLRequest,
-        completion: @escaping (Result<Model, Error>) -> Void
+        completion: @escaping (Result<[News], Error>) -> Void
     ) -> URLSessionDataTask  {
         return URLSession.shared.dataTask(with: request) { (data, response, error) in
             
@@ -60,8 +63,9 @@ private extension API {
             }
             
             do {
-                let model = try JSONDecoder().decode(Model.self, from: data)
-                completion(.success(model))
+                let model = try JSONDecoder().decode(NewsResponse.self, from: data)
+                self.coreData.addNewsOnCoreData(model: model, completion: completion)
+//                completion(.success(model))
             } catch let error {
                 completion(.failure(APIError.parsing(error)))
             }
@@ -80,4 +84,5 @@ private extension API {
         
         return components.url!
     }
+    
 }
