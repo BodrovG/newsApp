@@ -13,12 +13,14 @@ struct News: Decodable {
     let description: String
     let urlImage: String
     let urlArticle: String
+    let image: Data?
     
     enum CodingKeys: String, CodingKey {
         case title
         case description
         case urlImage = "urlToImage"
         case urlArticle = "url"
+        case image
     }
 }
 

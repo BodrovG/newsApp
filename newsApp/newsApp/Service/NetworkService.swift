@@ -8,13 +8,19 @@
 
 import Foundation
 
-protocol INetworkService {
+protocol NetworkServiceProtocol {
     
     func news(page: Int, completion: @escaping (Result<[News], Error>) -> Void )
     
 }
 
-class NetworkService: INetworkService{
+class NetworkService: NetworkServiceProtocol {
+    
+    private let api: APIProtocol
+    
+    init(api: APIProtocol) {
+        self.api = api
+    }
     
     func news(page: Int, completion: @escaping (Result<[News], Error>) -> Void ) {
         var parameters = [String:String]()
@@ -22,6 +28,6 @@ class NetworkService: INetworkService{
         parameters["page"] = "\(page)"
         parameters["apiKey"] = "a84a77df877e48d89ac7c0cfef570d15"
         
-        API().requestModel(parameters: parameters, completion: completion)
+        api.requestModel(parameters: parameters, completion: completion)
     }
 }

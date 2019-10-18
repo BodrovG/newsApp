@@ -8,48 +8,37 @@
 
 import UIKit
 
-class NewsListViewController: UIViewController, Alert {
+class NewsListViewController: UIViewController, ShowsAlert {
     private enum CellIdentifiers {
         static let list = "List"
     }
     
-    var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tv = UITableView()
-        tv.separatorColor = UIColor(red: CGFloat(0), green: CGFloat(104/255.0), blue: CGFloat(55/255.0), alpha: CGFloat(1.0))
         return tv
     }()
-//    var indicatorView: UIActivityIndicatorView = {
-//        let indicator = UIActivityIndicatorView()
-//        indicator.isUserInteractionEnabled = true
-//        indicator.hidesWhenStopped = true
-//        indicator.startAnimating()
-//        indicator.translatesAutoresizingMaskIntoConstraints = false
-//        return indicator
-//    }()
     
+    private var viewModel: NewsViewModelProtocol
     
-    private var viewModel: NewsViewModel!
+    init(viewModel: NewsViewModelProtocol) {
+//        super.init(nibName: nil, bundle: nil)
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
     
-    private var cancelables: [String: Cancelable] = [:]
-    
-    private var shouldShowLoadingCell = false
+    required init?(coder: NSCoder) { fatalError() }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.setDelegate(delegate: self)
         
         tableView.pinToSuperview(superview: view, top: 0, right: 0, bottom: 0, left: 0)
         tableView.isHidden = true
         tableView.dataSource = self
         tableView.delegate = self
         tableView.prefetchDataSource = self
-//        tableView.addSubview(indicatorView)
-//        indicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        indicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//        indicatorView.startAnimating()
         
         tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: CellIdentifiers.list)
-        
-        viewModel = NewsViewModel(delegate: self)
         
         viewModel.fetchNews()
     }
@@ -65,44 +54,43 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.list, for: indexPath) as! NewsTableViewCell
         cell.configure(with: viewModel.news(at: indexPath.row))
         
-        updateImageForCell(cell, inTableView: tableView, atIndexPath: indexPath)
-        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        updateImageForCell(cell as! NewsTableViewCell, inTableView: tableView, atIndexPath: indexPath)
+    }
+    
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cancelables[viewModel.news(at: indexPath.row).urlImage]?.cancel()
-        cancelables[viewModel.news(at: indexPath.row).urlImage] = nil
+        (cell as? NewsTableViewCell)?.newsImageView.image = UIImage(named: "defaultImage")
+        viewModel.cancelImageLoading(viewModel.news(at: indexPath.row))
     }
     
     func updateImageForCell(_ cell: NewsTableViewCell, inTableView tableView: UITableView, atIndexPath indexPath: IndexPath) {
         
-        let urlImage = viewModel.news(at: indexPath.row).urlImage
-        
-        cell.newsImageView.image = UIImage(named: "defaultImage")
-        
-        let cancelable = ImageService.getImage(withURL: urlImage) { result in
+        viewModel.loadImage(viewModel.news(at: indexPath.row)) { result in
             switch result {
-            case .success(let image):
-                cell.newsImageView.image = image
+            case .success(let data):
+                let image = UIImage(data: data)
+                DispatchQueue.main.async {
+                    cell.newsImageView.image = image
+                }
+                
             case .failure(let error):
                 print(error)
             }
         }
-        cancelables[urlImage] = cancelable
         
     }
 }
 
 extension NewsListViewController: NewsViewModelDelegate {
     func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?) {
-//        indicatorView.stopAnimating()
         tableView.isHidden = false
         tableView.reloadData()
     }
     
     func onFetchFailed(with reason: String) {
-//        indicatorView.stopAnimating()
         
         let title = "Warning"
         let action = UIAlertAction(title: "OK", style: .default)

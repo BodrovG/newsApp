@@ -6,7 +6,7 @@
 //  Copyright © 2019 Georgy Bodrov. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol Cancelable: AnyObject {
     
@@ -15,15 +15,21 @@ protocol Cancelable: AnyObject {
 
 class ImageService {
     
-    private static let cache = NSCache<NSString, UIImage>()
+    let news: News
+    
+    private static let cache = NSCache<NSString, NSData>()
+    
+    init(news: News) {
+        self.news = news
+    }
     
     static func getImage(
         withURL url: String,
-        completion: @escaping (Result<UIImage, Error>) -> Void
+        completion: @escaping (Result<Data, Error>) -> Void
     ) -> Cancelable? {
         
-        if let image = cache.object(forKey: url as NSString) {
-            completion(.success(image))
+        if let dataImage = cache.object(forKey: url as NSString) {
+            completion(.success(dataImage as Data))
             return nil
         } else {
             return downloadImage(withURL: url, completion: completion)
@@ -32,7 +38,7 @@ class ImageService {
     
     private static func downloadImage(
         withURL url: String,
-        completion: @escaping (Result<UIImage, Error>) -> Void
+        completion: @escaping (Result<Data, Error>) -> Void
     ) -> Cancelable? {
         
         guard let url = URL(string: url) else {
@@ -40,17 +46,12 @@ class ImageService {
             return nil
         }
         let dataTask = URLSession.shared.dataTask(with: url) { data, responseURL, error in
-            var downloadedImage: UIImage?
             
             if let data = data {
-                downloadedImage = UIImage(data: data)
-            }
-            
-            if downloadedImage != nil {
-                cache.setObject(downloadedImage!, forKey: url.absoluteString as NSString)
+                cache.setObject(data as NSData, forKey: url.absoluteString as NSString)
                 
                 DispatchQueue.main.async {
-                    completion(.success(downloadedImage!))
+                    completion(.success(data))
                 }
             }
             

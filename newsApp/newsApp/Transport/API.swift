@@ -8,9 +8,19 @@
 
 import Foundation
 
-class API {
+protocol APIProtocol {
     
-    let coreData = CoreData()
+    func requestModel(parameters: [String:String], completion: @escaping (Result<[News], Error>) -> Void)
+    
+}
+
+class API: APIProtocol {
+    
+    private let coreData: StorageProtocol
+    
+    init(storage: StorageProtocol) {
+        coreData = storage
+    }
     
     func requestModel(parameters: [String:String], completion: @escaping (Result<[News], Error>) -> Void) {
         guard let url = self.baseUrl(params: parameters) else {
@@ -22,6 +32,7 @@ class API {
         let task = createDataTask(from: request, completion: completion)
         task.resume()
     }
+    
 }
 
 enum APIError: LocalizedError {
@@ -65,9 +76,9 @@ private extension API {
             do {
                 let model = try JSONDecoder().decode(NewsResponse.self, from: data)
                 self.coreData.addNewsOnCoreData(model: model, completion: completion)
-//                completion(.success(model.news))
             } catch let error {
 //                completion(.failure(APIError.parsing(error)))
+                print(error)
             }
         }
     }

@@ -84,11 +84,11 @@
 			children = (
 				C5E69988235758CB00C04F11 /* App */,
 				C5859EDE2350978100786312 /* Extension */,
-				C5859ECD23507B0F00786312 /* Coordinator.swift */,
 				C5859ECF23507BAA00786312 /* MainScreen */,
 				C5859ED32350848200786312 /* Service */,
 				C5859ED92350858300786312 /* Transport */,
 				C5859EE72351DC7100786312 /* Resources */,
+				C5859ECD23507B0F00786312 /* Coordinator.swift */,
 			);
 			path = newsApp;
 			sourceTree = "<group>";

@@ -13,19 +13,36 @@ protocol NewsViewModelDelegate: class {
     func onFetchFailed(with reason: String)
 }
 
-final class NewsViewModel {
-    private weak var delegate: NewsViewModelDelegate?
+protocol NewsViewModelProtocol{
+    
+    func news(at index: Int) -> News
+    func fetchNews()
+    func setDelegate(delegate: NewsViewModelDelegate)
+    func loadImage(_ news: News, _ completion: @escaping (Result<Data, Error>) -> Void)
+    func cancelImageLoading(_ news: News)
+    
+    var currentCount: Int { get }
+    
+}
+
+final class NewsViewModel: NewsViewModelProtocol {
+    weak var delegate: NewsViewModelDelegate?
     
     private var news: [News] = []
     private var currentPage = 1
     private var isFetchInProgress = false
     
-    let networkService = NetworkService()
+    private let networkService: NetworkServiceProtocol
     
-    init(delegate: NewsViewModelDelegate) {
-        self.delegate = delegate
+    private var imageRequestCancelables: [String: Cancelable] = [:]
+    
+    init(networkService: NetworkServiceProtocol) {
+        self.networkService = networkService
     }
     
+    func setDelegate(delegate: NewsViewModelDelegate) {
+        self.delegate = delegate
+    }
     
     var currentCount: Int {
         return news.count
@@ -33,6 +50,16 @@ final class NewsViewModel {
     
     func news(at index: Int) -> News {
         return news[index]
+    }
+    
+    func loadImage(_ news: News, _ completion: @escaping (Result<Data, Error>) -> Void) {
+        let url = news.urlImage
+        imageRequestCancelables[url] = ImageService.getImage(withURL: url, completion: completion)
+    }
+    
+    func cancelImageLoading(_ news: News) {
+        imageRequestCancelables[news.urlImage]?.cancel()
+        imageRequestCancelables[news.urlImage] = nil
     }
     
     func fetchNews() {

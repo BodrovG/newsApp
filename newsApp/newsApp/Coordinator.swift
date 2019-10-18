@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol CoordinatorProtocol: AnyObject {
     
@@ -24,7 +25,25 @@ final class Coordinator: CoordinatorProtocol {
     }
     
     func startFlow() {
-        window.rootViewController = NewsListViewController()
+        
+        let container = NSPersistentContainer(name: "CoreDataModelNews")
+        
+        container.loadPersistentStores { storeDescription, error in
+            container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+            
+            if let error = error {
+                print("Unresolved error \(error)")
+            }
+            
+        }
+        
+        let storage = Storage(container: container)
+        let api = API(storage: storage)
+        let networkService = NetworkService(api: api)
+        let viewModel = NewsViewModel(networkService: networkService)
+        
+        
+        window.rootViewController = NewsListViewController(viewModel: viewModel)
         window.makeKeyAndVisible()
     }
     

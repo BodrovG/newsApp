@@ -9,22 +9,20 @@
 import Foundation
 import CoreData
 
-class CoreData{
-    var container: NSPersistentContainer!
-    // newsPredicate тут временно
-    var newsPredicate: NSPredicate?
+protocol StorageProtocol {
     
-    init() {
+    func addNewsOnCoreData(model: NewsResponse, completion: @escaping (Result<[News], Error>) -> Void)
+    func addImageForNews(model: NewsResponse, completion: @escaping (Result<[News], Error>) -> Void)
+}
+
+class Storage: StorageProtocol {
+    
+    private var container: NSPersistentContainer
+    
+    init(container: NSPersistentContainer) {
         
-        container = NSPersistentContainer(name: "CoreDataModelNews")
-        container.loadPersistentStores { storeDescription, error in
-            self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-            
-            if let error = error {
-                print("Unresolved error \(error)")
-            }
-            
-        }
+        self.container = container
+        
     }
     
     func addNewsOnCoreData(
@@ -50,25 +48,43 @@ class CoreData{
         
     }
     
-    
+    func addImageForNews(
+        model: NewsResponse,
+        completion: @escaping (Result<[News], Error>) -> Void
+    ) {
+        
+        let arrayNews = model.news
+        
+        DispatchQueue.main.async {
+            
+            for jsonNews in arrayNews {
+                let news = DBNews(context: self.container.viewContext)
+                news.title = jsonNews.title
+                news.descriptionText = jsonNews.description
+                news.urlArticle = jsonNews.urlArticle
+                news.urlImage = jsonNews.urlImage
+                news.image = nil
+            }
+            self.saveContext()
+            self.loadSavedData(model: arrayNews,completion: completion)
+        }
+        
+    }
     
     
 }
 
-private extension CoreData {
+private extension Storage {
     private func loadSavedData(
-    model: [News],
+        model: [News],
         completion: @escaping (Result<[News], Error>) -> Void
     ) {
         
-//        newsPredicate = NSPredicate(format: "title == 213")
-        
         let request = DBNews.createFetchRequest()
-//        request.predicate = newsPredicate
         
         do {
             let newsRequest = try container.viewContext.fetch(request)
-
+            
             let filteredNews = newsRequest.filter { result in
                 model.contains{
                     $0.urlArticle == result.urlArticle
@@ -79,7 +95,7 @@ private extension CoreData {
             print("Got \(filteredNews.count) news")
             completion(.success(news))
         } catch {
-            print(error)
+            completion(.failure(error))
         }
         
     }
@@ -91,7 +107,7 @@ private extension CoreData {
         guard let urlArticle = model.urlArticle else { return nil }
         
         
-        let news = News(title: title, description: description, urlImage: imageURL, urlArticle: urlArticle)
+        let news = News(title: title, description: description, urlImage: imageURL, urlArticle: urlArticle, image: model.image)
         
         return news
     }
