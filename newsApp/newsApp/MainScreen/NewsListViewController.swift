@@ -21,7 +21,6 @@ class NewsListViewController: UIViewController, ShowsAlert {
     private var viewModel: NewsViewModelProtocol
     
     init(viewModel: NewsViewModelProtocol) {
-//        super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

@@ -26,7 +26,7 @@ protocol NewsViewModelProtocol{
 }
 
 final class NewsViewModel: NewsViewModelProtocol {
-    weak var delegate: NewsViewModelDelegate?
+    private weak var delegate: NewsViewModelDelegate?
     
     private var news: [News] = []
     private var currentPage = 1
@@ -45,6 +45,7 @@ final class NewsViewModel: NewsViewModelProtocol {
     }
     
     var currentCount: Int {
+        
         return news.count
     }
     

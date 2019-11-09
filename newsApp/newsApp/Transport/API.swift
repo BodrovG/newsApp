@@ -92,7 +92,7 @@ private extension API {
         components.queryItems = params.map {
             URLQueryItem(name: $0, value: $1)
         }
-        
+//        https://newsapi.org/v2/everything?apiKey=a84a77df877e48d89ac7c0cfef570d15&page=1&q=russia
         return components.url!
     }
     
